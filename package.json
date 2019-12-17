@@ -19,7 +19,7 @@
 	},
 	"main": "./lib/linter.js",
 	"bin": {
-		"modix-mx": "./cli.js"
+		"smarty-lint": "./cli.js"
 	},
 	"devDependencies": {
 		"check-outdated": "^1.4.2",

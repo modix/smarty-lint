@@ -19,7 +19,7 @@
 	},
 	"main": "./lib/linter.js",
 	"bin": {
-		"modix-mx": "./bin/cli.js"
+		"modix-mx": "./cli.js"
 	},
 	"devDependencies": {
 		"check-outdated": "^1.4.2",

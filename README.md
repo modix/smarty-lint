@@ -25,10 +25,10 @@ By specifying a `smartylint.json` (or `smartylint.js`) file in the root of your 
 
 ```json
 {
-	"files": [
-		"**/*.tpl"
-	],
-	"rules": {
+  "files": [
+    "**/*.tpl"
+  ],
+  "rules": {
     "allowed-function-names": ["error", {
       "allowedFunctions": [
         "assign", "ldelim", "rdelim", "break", "continue",
@@ -42,19 +42,19 @@ By specifying a `smartylint.json` (or `smartylint.js`) file in the root of your 
       "functions": ["mdx_loopcount", "mdx_getlocale"],
       "modifiers": ["explode"]
     }],
-		"empty-block": "warn",
-		"empty-comment": "warn",
-		"eqeqeq": ["warn", {
+    "empty-block": "warn",
+    "empty-comment": "warn",
+    "eqeqeq": ["warn", {
       "ignore": ["=="]
       }],
-		"lower-case-identifier": ["warn", {
-			"ignore": ["namedAttribute", "property", "variable"]
-		}],
-		"unnecessary-encapsulation": "warn",
-		"unquoted-string": ["warn", {
+    "lower-case-identifier": ["warn", {
+      "ignore": ["namedAttribute", "property", "variable"]
+    }],
+    "unnecessary-encapsulation": "warn",
+    "unquoted-string": ["warn", {
       "ignore": ["array"]
     }]
-	}
+  }
 }
 ```
 

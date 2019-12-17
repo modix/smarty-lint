@@ -1,0 +1,21 @@
+{
+	"name": "@modix/smarty-lint",
+	"description": "Find and fix problems in your Smarty 3 code",
+	"publisher": "Modix",
+	"author": "Modix GmbH <product-dev@modix.eu>",
+	"license": "MIT",
+	"version": "0.1.0",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/Modix/smarty-lint"
+	},
+	"main": "cli.js",
+	"devDependencies": {
+		"typescript": "^3.7.3"
+	},
+	"dependencies": {
+		"@modix/smarty-tmlanguage": "^1.0.1",
+		"glob": "^7.1.6",
+		"vscode-textmate": "^4.4.0"
+	}
+}

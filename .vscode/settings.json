@@ -1,0 +1,19 @@
+{
+	"debug.console.wordWrap": false,
+	"editor.autoClosingBrackets": "never",
+	"editor.insertSpaces": false,
+	"editor.tabSize": 4,
+	"files.eol": "\n",
+	"files.exclude": {
+		".vscode": false,
+		"node_modules": false
+	},
+	"files.trimTrailingWhitespace": true,
+	"javascript.implicitProjectConfig.checkJs": true,
+	"javascript.preferences.quoteStyle": "single",
+	"typescript.format.insertSpaceBeforeFunctionParenthesis": true,
+	"typescript.preferences.quoteStyle": "single",
+	"typescript.tsdk": "node_modules\\typescript\\lib",
+	"workbench.iconTheme": "material-icon-theme",
+	"workbench.tree.indent": 22
+}

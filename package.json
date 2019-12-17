@@ -5,12 +5,24 @@
 	"author": "Modix GmbH <product-dev@modix.eu>",
 	"license": "MIT",
 	"version": "0.1.0",
+	"scripts": {
+		"publish:major": "npm version major",
+		"publish:minor": "npm version minor",
+		"publish:patch": "npm version patch",
+		"preversion": "npm run check-outdated",
+		"postversion": "git push && git push --tags && npm publish",
+		"check-outdated": "check-outdated --ignore-pre-releases"
+	},
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/Modix/smarty-lint"
 	},
-	"main": "cli.js",
+	"main": "./lib/linter.js",
+	"bin": {
+		"modix-mx": "./bin/cli.js"
+	},
 	"devDependencies": {
+		"check-outdated": "^1.4.2",
 		"typescript": "^3.7.3"
 	},
 	"dependencies": {

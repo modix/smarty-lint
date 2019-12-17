@@ -12,7 +12,7 @@ package.json:
 ```json
 {
   "scripts": {
-    "lint": "@modix/smarty-lint"
+    "lint": "smarty-lint"
   }
 }
 ```

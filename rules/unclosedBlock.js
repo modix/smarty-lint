@@ -18,7 +18,7 @@ module.exports = function unclosedBlock ({ tree, addError }) {
 
 		if (child.name === 'blockContent') {
 			/** @type {TokenTreeBranch | undefined} */
-			let identifier = lastChildren[i - 1].children.find((child) => child.name === 'identifier');
+			const identifier = lastChildren[i - 1].children.find(({ name }) => name === 'identifier');
 
 			addError({
 				message: `Unclosed ${(identifier ? `"{${identifier.raw}}" ` : '')}block. Make sure the order of closing tags is correct and every HTML-tag inside the block is closed.`,
@@ -35,7 +35,7 @@ module.exports = function unclosedBlock ({ tree, addError }) {
 
 /**
  * @param {TokenTreeBranch} parent
- * @return {TokenTreeBranch[]}
+ * @returns {TokenTreeBranch[]}
  */
 function parseChildren (parent) {
 	if (parent.children.length > 0) {

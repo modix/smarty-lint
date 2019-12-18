@@ -30,7 +30,7 @@ const REPLACEMENT_MAP = {
  * @returns {void}
  */
 module.exports = function eqeqeq ({ tree, addError, ignore }) {
-	const operators = querySelectorAll(tree, /(^|>)(logicalOperator)$/);
+	const operators = querySelectorAll(tree, /(^|>)(logicalOperator)$/u);
 
 	for (const operator of operators) {
 		if (REPLACEMENT_MAP[operator.raw] !== undefined && (!ignore || !ignore.includes(operator.raw))) {

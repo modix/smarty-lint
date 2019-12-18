@@ -16,7 +16,7 @@ const UPPERCASE_REG_EXP = /[A-Z]/u;
  * @returns {void}
  */
 module.exports = function lowerCaseIdentifier ({ tree, addError, ignore }) {
-	const matches = querySelectorAll(tree, /(^|>)(arithmeticOperator|constant|identifier|logicalOperator)$/);
+	const matches = querySelectorAll(tree, /(^|>)(arithmeticOperator|constant|identifier|logicalOperator)$/u);
 
 	for (const match of matches) {
 		let type;
@@ -28,6 +28,7 @@ module.exports = function lowerCaseIdentifier ({ tree, addError, ignore }) {
 			const parent = getParent(tree, match);
 
 			if (parent === null) {
+				// eslint-disable-next-line no-continue
 				continue;
 			}
 

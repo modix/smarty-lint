@@ -13,29 +13,31 @@ const getParent = require('./helper/getParent');
  * @returns {void}
  */
 module.exports = function emptyBlock ({ tree, addError }) {
-	const children = querySelectorAll(tree, /(^|>)(openEnd)$/);
+	const children = querySelectorAll(tree, /(^|>)(openEnd)$/u);
 
 	for (const child of children) {
 		const parent = getParent(tree, child);
 
 		if (parent !== null) {
-			// Handling for else-blocks
 			if (parent.children[parent.children.length - 1].name === 'openEnd') {
+				// Handling for else-blocks
+
 				addError({
-					message: `Unnecessary empty block.`,
+					message: 'Unnecessary empty block.',
 					startLine: parent.startLine,
 					startColumn: parent.startColumn,
 					endLine: parent.endLine,
 					endColumn: parent.endColumn
 				});
 			}
-			// Handling for other block types
 			else if (['block', 'blockCondition', 'blockLiteral'].includes(parent.name)) {
+				// Handling for other block types
+
 				const index = parent.children.indexOf(child);
 
 				if (['close', 'blockLiteralClose'].includes(parent.children[index + 1].name)) {
 					addError({
-						message: `Unnecessary empty block.`,
+						message: 'Unnecessary empty block.',
 						startLine: parent.startLine,
 						startColumn: parent.startColumn,
 						endLine: parent.endLine,

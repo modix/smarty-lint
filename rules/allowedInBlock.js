@@ -14,7 +14,7 @@ const getParent = require('./helper/getParent');
  * @returns {void}
  */
 module.exports = function allowedInBlock ({ tree, addError }) {
-	const children = querySelectorAll(tree, /(^|>)(blockForElse|blockForEachElse|blockElseIf|blockElse|blockSectionElse)$/);
+	const children = querySelectorAll(tree, /(^|>)(blockForElse|blockForEachElse|blockElseIf|blockElse|blockSectionElse)$/u);
 
 	for (const child of children) {
 		const parent = getParent(tree, getParent(tree, child));
@@ -48,7 +48,7 @@ module.exports = function allowedInBlock ({ tree, addError }) {
 				}
 
 				case 'blockElseIf': {
-					const identifier = querySelector(parent, /^block>identifier(>|$)/);
+					const identifier = querySelector(parent, /^block>identifier(>|$)/u);
 
 					if ((parent.name !== 'blockCondition' || (identifier !== null && identifier.raw.toLowerCase() !== 'if')) && parent.name !== 'blockElseIf') {
 						addError({
@@ -63,7 +63,7 @@ module.exports = function allowedInBlock ({ tree, addError }) {
 				}
 
 				case 'blockElse': {
-					const identifier = querySelector(parent, /^block>identifier(>|$)/);
+					const identifier = querySelector(parent, /^block>identifier(>|$)/u);
 
 					if ((parent.name !== 'blockCondition' || (identifier !== null && identifier.raw.toLowerCase() !== 'if')) && parent.name !== 'blockElseIf') {
 						addError({
@@ -78,7 +78,7 @@ module.exports = function allowedInBlock ({ tree, addError }) {
 				}
 
 				case 'blockSectionElse': {
-					const identifier = querySelector(parent, /^block>identifier(>|$)/);
+					const identifier = querySelector(parent, /^block>identifier(>|$)/u);
 
 					if (parent.name !== 'block' || (identifier !== null && identifier.raw.toLowerCase() !== 'section')) {
 						addError({
@@ -91,6 +91,8 @@ module.exports = function allowedInBlock ({ tree, addError }) {
 					}
 					break;
 				}
+
+				default:
 			}
 		}
 	}

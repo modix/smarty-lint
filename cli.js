@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+
 const fs = require('fs');
 const glob = require('glob');
 const path = require('path');
@@ -17,24 +19,28 @@ const linter = require('./lib/linter');
 		let filesWithFailures = 0;
 
 		/** @type {{ files: string[]; rules: import('./lib/linter').OptionsRules}} */
+		// eslint-disable-next-line global-require
 		const options = require(path.resolve(cwd, './smartylint'));
+
 		/** @type {{ files: string[]; rules: import('./lib/linter').OptionsRules}} */
 		// @ts-ignore
+		// eslint-disable-next-line global-require
 		const defaultOptions = require('./smartylint');
 
 		await linter.initialize({ rules: options.rules });
 
-		const files = (options.files ? options.files : defaultOptions.files).reduce((files, pattern) => [...files, ...glob.sync(pattern)], /** @type {string[]} */([]));
+		const files = (options.files ? options.files : defaultOptions.files).reduce((resolvedFiles, pattern) => [...resolvedFiles, ...glob.sync(pattern)], /** @type {string[]} */([]));
 
 		for (const fileName of files) {
 			const filePath = path.resolve(cwd, fileName);
+			// eslint-disable-next-line no-await-in-loop
 			const failures = await verifyFile(filePath);
 
 			totalFailures += failures.length;
 			filesWithFailures++;
 
 			for (const failure of failures) {
-				console.log(`${filePath}:${failure.startLine + 1}:${failure.startColumn + 1}: ${failure.message} [${failure.severity}/${failure.ruleId}]`)
+				console.log(`${filePath}:${failure.startLine + 1}:${failure.startColumn + 1}: ${failure.message} [${failure.severity}/${failure.ruleId}]`);
 			}
 		}
 
@@ -49,7 +55,8 @@ const linter = require('./lib/linter');
 	catch (error) {
 		console.error(error.message);
 
-		process.exit(-1)
+		// eslint-disable-next-line no-process-exit
+		process.exit(-1);
 	}
 })();
 
@@ -74,9 +81,9 @@ async function verifyFile (filePath) {
 				startLine: 0,
 				startColumn: 0,
 				endLine: 0,
-				endColumn: 0,
+				endColumn: 0
 			}
-		]
+		];
 	}
 
 	try {
@@ -94,9 +101,9 @@ async function verifyFile (filePath) {
 				startLine: 0,
 				startColumn: 0,
 				endLine: 0,
-				endColumn: 0,
+				endColumn: 0
 			}
-		]
+		];
 	}
 }
 
@@ -107,7 +114,7 @@ async function verifyFile (filePath) {
  * @returns {Promise<Buffer>}
  */
 function readFile (filePath) {
-    return new Promise((resolve, reject) => {
-        fs.readFile(filePath, (error, data) => (error ? reject(error) : resolve(data)));
-    })
+	return new Promise((resolve, reject) => {
+		fs.readFile(filePath, (error, data) => (error ? reject(error) : resolve(data)));
+	});
 }

@@ -22,7 +22,7 @@ module.exports = function invalidArithmeticOperation ({ tree, addError }) {
 				if (i === 0 || ['begin', 'separator'].includes(children[i - 1].name)) {
 					if (children[i].children[0].name !== 'arithmeticOperator' || (children[i].children[0].raw !== '+' && children[i].children[0].raw !== '-')) {
 						addError({
-							message: `Left-operand missing in operation.`,
+							message: 'Left-operand missing in operation.',
 							startLine: children[i].startLine,
 							startColumn: children[i].startColumn,
 							endLine: children[i].endLine,
@@ -30,7 +30,25 @@ module.exports = function invalidArithmeticOperation ({ tree, addError }) {
 						});
 					}
 				}
-				else if (!['begin', 'array', 'assignmentOperator', 'constant', 'doubleQuotedString', 'encapsulatedExpression', 'identifier', 'modifier', 'negation', 'number', 'operation', 'separator', 'singleQuotedString', 'smartyBlock', 'stepKeyword', 'unquotedString', 'variable'].includes(children[i - 1].name)) {
+				else if (![
+					'begin',
+					'array',
+					'assignmentOperator',
+					'constant',
+					'doubleQuotedString',
+					'encapsulatedExpression',
+					'identifier',
+					'modifier',
+					'negation',
+					'number',
+					'operation',
+					'separator',
+					'singleQuotedString',
+					'smartyBlock',
+					'stepKeyword',
+					'unquotedString',
+					'variable'
+				].includes(children[i - 1].name)) {
 					addError({
 						message: `Invalid left-operand type "${children[i - 1].name}" in operation.`,
 						startLine: children[i - 1].startLine,

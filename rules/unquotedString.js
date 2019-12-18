@@ -14,7 +14,7 @@ const getParent = require('./helper/getParent');
  * @returns {void}
  */
 module.exports = function unquotedString ({ tree, addError, ignore }) {
-	const matches = querySelectorAll(tree, /(^|>)unquotedString$/);
+	const matches = querySelectorAll(tree, /(^|>)unquotedString$/u);
 
 	for (const match of matches) {
 		const parent = getParent(tree, match);

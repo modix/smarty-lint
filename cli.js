@@ -17,12 +17,14 @@ const linter = require('./lib/linter');
 		let filesWithFailures = 0;
 
 		/** @type {{ files: string[]; rules: import('./lib/linter').OptionsRules}} */
+		const options = require(path.resolve(cwd, './smartylint'));
+		/** @type {{ files: string[]; rules: import('./lib/linter').OptionsRules}} */
 		// @ts-ignore
-		const options = require('./smartylint');
+		const defaultOptions = require('./smartylint');
 
 		await linter.initialize({ rules: options.rules });
 
-		const files = options.files.reduce((files, pattern) => [...files, ...glob.sync(pattern)], /** @type {string[]} */([]));
+		const files = (options.files ? options.files : defaultOptions.files).reduce((files, pattern) => [...files, ...glob.sync(pattern)], /** @type {string[]} */([]));
 
 		for (const fileName of files) {
 			const filePath = path.resolve(cwd, fileName);

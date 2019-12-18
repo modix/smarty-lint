@@ -4,7 +4,7 @@
 	"publisher": "Modix",
 	"author": "Modix GmbH <product-dev@modix.eu>",
 	"license": "MIT",
-	"version": "0.1.3",
+	"version": "0.1.4",
 	"scripts": {
 		"publish:major": "npm version major",
 		"publish:minor": "npm version minor",

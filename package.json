@@ -6,7 +6,7 @@
 	"license": "MIT",
 	"version": "0.1.5",
 	"scripts": {
-		"lint": "node node_modules/typescript/bin/tsc --project jsconfig.json && eslint **/*.js --format unix",
+		"lint": "node node_modules/typescript/bin/tsc --project jsconfig.json && eslint **/*.js **/*.d.ts --format unix",
 		"publish:major": "npm version major",
 		"publish:minor": "npm version minor",
 		"publish:patch": "npm version patch",

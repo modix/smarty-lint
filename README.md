@@ -1,5 +1,7 @@
 # Smarty-Lint
 
+<img src="https://cdn.jsdelivr.net/gh/Modix/smarty-lint/screenshot-vscode.png" width="100%" />
+
 ## Installation
 
 ```

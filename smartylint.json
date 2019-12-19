@@ -196,7 +196,7 @@
 
 		"empty-block": "warn",
 		"empty-comment": "warn",
-		"eqeqeq": ["warn"],
+		"eqeqeq": "warn",
 		"lower-case-identifier": ["warn", {
 			"ignore": ["namedAttribute", "property", "variable"]
 		}],

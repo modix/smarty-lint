@@ -33,7 +33,7 @@
 		"typescript": "^3.7.3"
 	},
 	"dependencies": {
-		"@modix/smarty-tmlanguage": "^1.0.1",
+		"@modix/smarty-tmlanguage": "^1.1.0",
 		"glob": "^7.1.6",
 		"vscode-textmate": "^4.4.0"
 	}

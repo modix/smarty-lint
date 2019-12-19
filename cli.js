@@ -19,8 +19,12 @@ const linter = require('./lib/linter');
 		let filesWithFailures = 0;
 
 		/** @type {{ files?: string[]; rules?: import('./lib/linter').OptionsRules}} */
-		// eslint-disable-next-line global-require
-		const options = require(path.resolve(cwd, './smartylint'));
+		let options = {};
+		try {
+			// eslint-disable-next-line global-require
+			options = require(path.resolve(cwd, './smartylint'));
+		}
+		catch (ex) { /* If 'smartylint.(js|json)' cannot be found in CWD, the linter is using the default settings, so we can ignore this error */ }
 
 		/** @type {{ files: string[]; rules: import('./lib/linter').OptionsRules}} */
 		// @ts-ignore

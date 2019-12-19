@@ -4,7 +4,7 @@
 	"publisher": "Modix",
 	"author": "Modix GmbH <product-dev@modix.eu>",
 	"license": "MIT",
-	"version": "0.1.5",
+	"version": "0.2.0",
 	"scripts": {
 		"lint": "node node_modules/typescript/bin/tsc --project jsconfig.json && eslint **/*.js **/*.d.ts --format unix",
 		"publish:major": "npm version major",

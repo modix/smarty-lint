@@ -12,18 +12,18 @@ export interface Failure {
 	severity?: FailureSeverity;
 }
 
-export function initialize (options?: { vscodeTextMate?: import('vscode-textmate') | null; rules: { [ruleName: string]: string | [string, object]; }; }): Promise<void> | never;
+export function initialize (options?: { vscodeTextMate?: import('vscode-textmate') | null; rules?: { [ruleName: string]: string | [string, object]; }; }): Promise<void> | never;
 export function verify (sourceCode: string, options?: { fileName?: string; maxFailures?: number; }): Promise<Failure[]> | never;
 
 export interface OptionsRules {
-	[ruleName: string]: string | [FailureSeverity | 'off', Object];
+	[ruleName: string]: string | [FailureSeverity | 'off', {}];
 }
 
 export interface Token {
 	scopes: string[];
 	tmScopes: string[];
- 	startLine: number;
- 	startColumn: number;
+	startLine: number;
+	startColumn: number;
 	endLine: number;
 	endColumn: number;
 }
@@ -32,6 +32,6 @@ export interface LinterRule {
 	filePath: string;
 	name: string;
 	severity: FailureSeverity;
-	options: Object;
+	options: {};
 	exec: RuleFunction;
 }

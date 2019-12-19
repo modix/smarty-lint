@@ -27,6 +27,16 @@ module.exports =  {
 		'@typescript-eslint/no-use-before-define': 'off',
 		'@typescript-eslint/no-var-requires': 'off',
 		'@typescript-eslint/triple-slash-reference': 'off',
+		'@typescript-eslint/member-delimiter-style': ['error', {
+			multiline: {
+				delimiter: 'semi',
+				requireLast: true
+			},
+			singleline: {
+				delimiter: 'semi',
+				requireLast: true
+			}
+		}],
 
 		// eslint-plugin-jsdoc Rules
 		'jsdoc/check-alignment': 'error',
@@ -232,7 +242,14 @@ module.exports =  {
 		'keyword-spacing': 'error',
 		'line-comment-position': 'error',
 		'linebreak-style': 'error',
-		'lines-around-comment': ['error', { beforeBlockComment: true, beforeLineComment: true, allowBlockStart: true, allowObjectStart: true, allowArrayStart: true, allowClassStart: true }],
+		'lines-around-comment': ['off', { // @todo there are still types of blocks where they should be allowed, but thes types are not catched by allow*Start (e.g. in interfaces).
+			beforeBlockComment: true,
+			beforeLineComment: true,
+			allowBlockStart: true,
+			allowObjectStart: true,
+			allowArrayStart: true,
+			allowClassStart: true
+		}],
 		'lines-between-class-members': 'error',
 		'max-depth': 'error',
 		'max-len': ['error', { code: 260 }],

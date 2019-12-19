@@ -18,7 +18,7 @@ const linter = require('./lib/linter');
 		let totalFailures = 0;
 		let filesWithFailures = 0;
 
-		/** @type {{ files: string[]; rules: import('./lib/linter').OptionsRules}} */
+		/** @type {{ files?: string[]; rules?: import('./lib/linter').OptionsRules}} */
 		// eslint-disable-next-line global-require
 		const options = require(path.resolve(cwd, './smartylint'));
 
